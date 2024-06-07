@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";import{o as c,c as _}from"./index-ce752780.js";const o={};function t(r,n){return c(),_("p",null,"先上课")}const f=e(o,[["render",t],["__scopeId","data-v-458f820f"]]);export{f as default};

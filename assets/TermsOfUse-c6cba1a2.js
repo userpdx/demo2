@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";import{o as c,c as _}from"./index-ce752780.js";const s={};function o(t,r){return c(),_("div",null,"发的顺丰")}const f=e(s,[["render",o],["__scopeId","data-v-c0c5e58a"]]);export{f as default};
