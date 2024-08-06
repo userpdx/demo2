@@ -33,11 +33,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm' # 修改这里以使用 pnpm 缓存
+          cache: 'pnpm' # 指定 pnpm 缓存
+      - name: Install pnpm
+        run: |
+          # 安装 pnpm
+          npm install -g pnpm
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile # 使用 pnpm 安装依赖
+        run: pnpm install --no-frozen-lockfile
       - name: Build
-        run: pnpm run build # 假设你的构建脚本是使用 pnpm 的
+        run: pnpm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
