@@ -3,7 +3,7 @@ name: Deploy Vue App to GitHub Pages
 on:
   push:
     branches:
-      - main # 更改为主分支的名字，如果是 master 或其他分支
+      - main # 更改为您的主分支名称，例如 "master"
 
 jobs:
   build-and-deploy:
@@ -11,25 +11,21 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-        with:
-          submodules: true  # 如果你的项目中有子模块
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20 # 使用 Node.js 18 版本
+          node-version: 18 # 明确指定 Node.js 18 版本
 
       - name: Install Dependencies
         run: npm ci
 
       - name: Build Vue App
-        run: pnpm run build # 这里的命令取决于你的构建脚本
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public # 这里假设你的构建输出目录是 public
-          user_name: your-username # 可以是你的 GitHub 用户名或者任何你想要的用户名
+          publish_dir: ./public
           commit_message: 'Deployed Vue app to GitHub Pages'
