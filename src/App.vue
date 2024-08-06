@@ -13,7 +13,7 @@ onMounted(() => {
 
 <template>
 	<div class="home">
-		我是首页
+		这是我是首页
 	</div>
 </template>
 
