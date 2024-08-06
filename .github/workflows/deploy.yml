@@ -23,27 +23,32 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Node
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm' # 指定使用 pnpm 缓存
+          cache: 'pnpm'
+
       - name: Install pnpm
-        run: npm install -g pnpm
-      - name: Verify pnpm installation
-        run: which pnpm # 输出 pnpm 的路径来确认安装
-      - name: Check pnpm version
-        run: pnpm --version # 检查 pnpm 版本
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8.6.3 # 你可以指定一个特定的 pnpm 版本，也可以省略以安装最新版本
+
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
+
       - name: Build
         run: pnpm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
